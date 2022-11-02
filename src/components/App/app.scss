@@ -3,34 +3,33 @@
 
 
 
-.test1 {
-    @include u1.media(">=desktop") {
-        background-color: yellow;
-
-        &::after {
-            content: "desktop"
-        }
-    }
-    @include u1.media(">=tablet", "<desktop") {
-        background-color: skyblue;
-
-        &::after {
-            content: "tablet"
-        }
-    }
-
-    @include u1.media(">=phone", "<tablet") {
-        background-color: aquamarine;
-
-        &::after {
-            content: "phone"
-        }
-    }
-}
 
 body {
-    background-color: #1F2326 !important;
+    background-color: #0a0024 !important;
+    color: #00ffff
 }
 .AppMain {
     @include u1.block_display();
+
+    .topBar {
+        display: flex;
+        padding: u1.rem(15) 1vw;
+        justify-content: space-between;
+        align-items: center;
+
+        .topLogo {
+            font-size: 30px;
+            font-weight: 700;
+        }
+        .topBtn {
+            button {
+                padding: 5px 18px;
+                border-radius: 4px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .5px;
+                background-color: #b873ff;
+            }
+        }
+    }
 }

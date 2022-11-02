@@ -1,6 +1,6 @@
 import './app.scss';
 import { motion, Variant } from 'framer-motion';
-import { useRef } from 'react';
+// import { useRef } from 'react';
 
 // import the assets we will be using
 import img1 from '../../assets/img1.jpg'
@@ -34,7 +34,22 @@ const App = () => {
 
     return (
         <div className="AppMain">
+            <div className="topBar">
+                <div className="topLogo">STANLEY TO!</div>
+                <div className="topBtn"><button>Latest movies</button></div>
+            </div>
+            <div className="">
 
+            </div>
+            <div className="moviesCvr">
+                {Object.values(images).map((item, index) => {
+                    return (
+                        <motion.div className="ImgCvr" key={item} variants={cardVariant} initial="initial" animate="animate" custom={index}>
+                            <img src={item} alt="" />
+                        </motion.div>
+                    )
+                })}
+            </div>
         </div>
     )
 }
