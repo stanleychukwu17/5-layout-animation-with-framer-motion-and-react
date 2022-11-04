@@ -1,10 +1,11 @@
 @forward '../../styles/globals/';
 @use '../../styles/util/' as u1;
 
+$color1: #00ffff;
 
 body {
     background-color: #0a0024 !important;
-    color: #00ffff
+    color: $color1
 }
 .AppMain {
     @include u1.block_display();
@@ -20,16 +21,6 @@ body {
             font-weight: 700;
         }
 
-        .filterCvr {
-            display: flex;
-            position: relative;
-            background-color: red;
-
-            button {
-                width: 500px;
-            }
-        }
-
         .topBtn {
             button {
                 padding: 5px 18px;
@@ -39,6 +30,66 @@ body {
                 letter-spacing: .5px;
                 background-color: #b873ff;
             }
+        }
+    }
+
+    .filterCvr {
+        display: flex;
+        position: relative;
+        padding: 10px 1vw;
+
+        > div {
+            margin: 0 30px 0 0;
+
+            button {
+                width: 135px;
+                position: relative;
+                overflow: hidden;
+                padding: 0.8em 1.8em;
+                border: 2px solid $color1;
+                background-color: transparent;
+                color: $color1;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 14px;
+                transition: .3s;
+                z-index: 1;
+                font-family: inherit;
+                border-radius: 7px;
+                cursor: pointer;
+
+                &::before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    width: 0;
+                    height: 300%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(45deg);
+                    background: $color1;
+                    transition: .5s ease;
+                    z-index: -1;
+                    border-radius: 7px;
+                }
+
+                &:hover::before {
+                    width: 105%;
+                }
+
+                &:hover {
+                    color: #111;
+                    font-weight: bold;
+                }
+                &:active {
+                    transform: translateY(3px);
+                }
+            }
+
+
+
+
+
         }
     }
 
