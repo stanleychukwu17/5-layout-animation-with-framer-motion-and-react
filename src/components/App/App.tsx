@@ -21,7 +21,7 @@ const cardVariant: {initial?: Variant, animate?: Variant} = {
     animate: (custom) => ({
         y:0, opacity:1,
         transition: {
-            duration: .5,
+            duration: 1,
             delay: custom * 0.2,
             ease: "easeOut"
         }
