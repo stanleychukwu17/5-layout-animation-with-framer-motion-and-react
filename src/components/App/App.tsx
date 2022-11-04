@@ -39,7 +39,9 @@ const App = () => {
                 <div className="topBtn"><button>Latest movies</button></div>
             </div>
             <div className="">
-
+                <div className=""><button>All movies</button></div>
+                <div className=""><button>Comedy</button></div>
+                <div className=""><button>Action</button></div>
             </div>
             <div className="moviesCvr">
                 {Object.values(images).map((item, index) => {
