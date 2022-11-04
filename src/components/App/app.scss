@@ -2,8 +2,6 @@
 @use '../../styles/util/' as u1;
 
 
-
-
 body {
     background-color: #0a0024 !important;
     color: #00ffff
@@ -20,6 +18,16 @@ body {
         .topLogo {
             font-size: 30px;
             font-weight: 700;
+        }
+
+        .filterCvr {
+            display: flex;
+            position: relative;
+            background-color: red;
+
+            button {
+                width: 500px;
+            }
         }
 
         .topBtn {

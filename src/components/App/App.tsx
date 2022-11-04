@@ -1,6 +1,6 @@
-import './app.scss';
 import { motion, Variant } from 'framer-motion';
 // import { useRef } from 'react';
+import './app.scss';
 
 // import the assets we will be using
 import img1 from '../../assets/img1.jpg'
@@ -38,7 +38,7 @@ const App = () => {
                 <div className="topLogo">STANLEY TO!</div>
                 <div className="topBtn"><button>Latest movies</button></div>
             </div>
-            <div className="">
+            <div className="filterCvr">
                 <div className=""><button>All movies</button></div>
                 <div className=""><button>Comedy</button></div>
                 <div className=""><button>Action</button></div>
