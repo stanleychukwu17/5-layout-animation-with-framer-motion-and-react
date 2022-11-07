@@ -14,6 +14,16 @@ import img5 from '../../assets/img5.jpg'
 import img6 from '../../assets/img6.jpg'
 import img7 from '../../assets/img7.jpg'
 import img8 from '../../assets/img8.jpg'
+
+const img = [img1, img2, img3, img4, img5, img6, img7, img8]
+const imgObj: {img:string}[] = []
+// const imgObj: Record<string, {img:string}> = {}
+
+img.forEach((ech, index) => {
+    imgObj.push({img:ech})
+})
+
+console.log(imgObj)
 const images = {img1, img2, img3, img4, img5, img6, img7, img8}
 
 
