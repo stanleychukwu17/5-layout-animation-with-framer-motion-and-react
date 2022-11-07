@@ -46,8 +46,11 @@ const App = () => {
             <div className="moviesCvr">
                 {Object.values(images).map((item, index) => {
                     return (
-                        <motion.div className="ImgCvr" key={item} variants={cardVariant} initial="initial" animate="animate" custom={index}>
-                            <img src={item} alt="" />
+                        <motion.div className="ImgBoth" key={item} variants={cardVariant} initial="initial" animate="animate" custom={index}>
+                            <motion.div className='ImgCvr'>
+                                <img src={item} alt="" />
+                            </motion.div>
+                            <div className="">This movie is nice</div>
                         </motion.div>
                     )
                 })}
