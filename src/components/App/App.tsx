@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import './app.scss';
 
 // motion variant
-import { cardVariant } from './Variants';
+import { cardVariant, imgTitleVar,imgMainVar } from './Variants';
 
 // import the assets we will be using
 import img1 from '../../assets/img1.jpg'
@@ -15,9 +15,6 @@ import img6 from '../../assets/img6.jpg'
 import img7 from '../../assets/img7.jpg'
 import img8 from '../../assets/img8.jpg'
 const images = {img1, img2, img3, img4, img5, img6, img7, img8}
-
-
-
 
 
 const App = () => {
@@ -37,10 +34,10 @@ const App = () => {
                 {Object.values(images).map((item, index) => {
                     return (
                         <motion.div className="ImgBoth" key={item} variants={cardVariant} initial="initial" animate="animate" custom={index}>
-                            <motion.div className='ImgCvr'>
-                                <img src={item} alt="" />
+                            <motion.div className='ImgCvr' >
+                                <motion.img src={item} alt="" variants={imgMainVar} />
                             </motion.div>
-                            <motion.div className="ImgTitle">This movie is nice</motion.div>
+                            <motion.div className="ImgTitle" variants={imgTitleVar}>This movie is nice</motion.div>
                         </motion.div>
                     )
                 })}
