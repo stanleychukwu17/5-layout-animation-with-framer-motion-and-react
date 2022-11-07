@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { gsap } from 'gsap';
 // import { useRef } from 'react';
 import './app.scss';
 
@@ -16,15 +17,21 @@ import img7 from '../../assets/img7.jpg'
 import img8 from '../../assets/img8.jpg'
 
 const img = [img1, img2, img3, img4, img5, img6, img7, img8]
-const imgObj: {img:string}[] = []
+const movieTitles = [
+    'The Batman (2022)', 'Avatar: The Way of Water (2022)', 'Glass Onion: A Knives Out Mystery (2022)',
+    'Killers of the Flower Moon (2023)', 'Spider-Man: Across the Spider-Verse (2023)', 'Elvis (2022)',
+    'Babylon (I) (2022)', 'Sherlock Holmes 3'
+]
+const movieGenre = ['action', 'comedy', 'comedy', 'action', 'comedy', 'action', 'action', 'comedy']
+const imgObj: {key:number, img:string, title:string, w:string}[] = []
 // const imgObj: Record<string, {img:string}> = {}
 
 img.forEach((ech, index) => {
-    imgObj.push({img:ech})
+    imgObj.push({key:gsap.utils.random(0, 100), img:ech, title:movieTitles[index], 'w':movieGenre[index]})
 })
-
-console.log(imgObj)
-const images = {img1, img2, img3, img4, img5, img6, img7, img8}
+img.forEach((ech, index) => {
+    imgObj.push({key:gsap.utils.random(0, 100), img:ech, title:movieTitles[index], 'w':movieGenre[index]})
+})
 
 
 const App = () => {
@@ -41,13 +48,13 @@ const App = () => {
                 <div className=""><button>Action</button></div>
             </div>
             <div className="moviesCvr">
-                {Object.values(images).map((item, index) => {
+                {imgObj.map((ech, index) => {
                     return (
-                        <motion.div className="ImgBoth" key={item} variants={cardVariant} initial="initial" animate="animate" custom={index}>
+                        <motion.div className="ImgBoth" key={`${ech.key}-${ech.title}`} variants={cardVariant} initial="initial" animate="animate" custom={index}>
                             <motion.div className='ImgCvr' >
-                                <motion.img src={item} alt="" variants={imgMainVar} />
+                                <motion.img src={ech.img} alt="" variants={imgMainVar} />
                             </motion.div>
-                            <motion.div className="ImgTitle" variants={imgTitleVar}>This movie is nice</motion.div>
+                            <motion.div className="ImgTitle" variants={imgTitleVar}>{ech.title}</motion.div>
                         </motion.div>
                     )
                 })}
