@@ -1,6 +1,9 @@
-import { motion, Variant } from 'framer-motion';
+import { motion } from 'framer-motion';
 // import { useRef } from 'react';
 import './app.scss';
+
+// motion variant
+import { cardVariant } from './Variants';
 
 // import the assets we will be using
 import img1 from '../../assets/img1.jpg'
@@ -13,20 +16,7 @@ import img7 from '../../assets/img7.jpg'
 import img8 from '../../assets/img8.jpg'
 const images = {img1, img2, img3, img4, img5, img6, img7, img8}
 
-// motion variant
-const cardVariant: {initial?: Variant, animate?: Variant} = {
-    initial: (custom) => ({
-        y: -60, opacity:0,
-    }),
-    animate: (custom) => ({
-        y:0, opacity:1,
-        transition: {
-            duration: 1,
-            delay: custom * 0.2,
-            ease: "easeOut"
-        }
-    })
-};
+
 
 
 
