@@ -96,14 +96,13 @@ body {
         position: relative;
 
         .ImgBoth {
-            display: block;
-            position: relative;
-            overflow: hidden;
+            @include u1.block_display();
             min-width: 22vw;
             width: 22vw;
-            margin: u1.rem(25) .5vw;
+            margin: u1.rem(30) .5vw;
 
             .ImgCvr {
+                @include u1.block_display();
                 width: 100%;
                 height: 500px;
                 border-radius: 30px;
@@ -114,6 +113,13 @@ body {
                     object-fit: cover;
                     pointer-events: none;
                 }
+            }
+
+            .ImgTitle {
+                padding: 15px .3vw 0;
+                // color: #00e6bd;
+                font-weight: bold;
+                font-size: clamp(1rem, 1.2vw, 2rem); 
             }
         }
     }

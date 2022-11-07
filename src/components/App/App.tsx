@@ -50,7 +50,7 @@ const App = () => {
                             <motion.div className='ImgCvr'>
                                 <img src={item} alt="" />
                             </motion.div>
-                            <div className="">This movie is nice</div>
+                            <motion.div className="ImgTitle">This movie is nice</motion.div>
                         </motion.div>
                     )
                 })}
