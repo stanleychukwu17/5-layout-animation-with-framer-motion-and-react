@@ -67,10 +67,11 @@ const App = () => {
             </div>
             <div className="moviesCvr">
                 {imgObj.map((ech, index) => {
-                    if (genre === 'all') {
+                    if (ech.genre === genre) {
                         return <ImgComp key={index} obj={ech} index={index} />
-                    } else if (ech.genre === genre) {
+                    } else {
                         return <ImgComp key={index} obj={ech} index={index} />
+
                     }
                 })}
             </div>
