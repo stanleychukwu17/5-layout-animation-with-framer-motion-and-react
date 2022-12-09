@@ -22,7 +22,9 @@ const movieTitles = [
     'Babylon (I) (2022)', 'Sherlock Holmes 3'
 ]
 const movieGenre = ['action', 'comedy', 'comedy', 'action', 'comedy', 'action', 'action', 'comedy']
-const imgObj: {key:number, img:string, title:string, genre:string}[] = []
+
+type singleImgType = {key:number, img:string, title:string, genre:string}
+const imgObj: singleImgType[] = []
 // const imgObj: Record<string, {img:string}> = {}
 
 img.forEach((ech, index) => {
@@ -32,6 +34,21 @@ img.forEach((ech, index) => {
     imgObj.push({key:gsap.utils.random(0, 100), img:ech, title:movieTitles[index], 'genre':movieGenre[index]})
 })
 
+
+type imgProps = {
+    obj: singleImgType,
+    index: number
+}
+const ImgComp = ({obj, index}: imgProps) => {
+    return (
+        <motion.div className="ImgBoth" key={`${obj.key}-${obj.title}`} variants={cardVariant} initial="initial" animate="animate" custom={index}>
+            <motion.div className='ImgCvr' >
+                <motion.img src={obj.img} alt="" variants={imgMainVar} />
+            </motion.div>
+            <motion.div className="ImgTitle" variants={imgTitleVar}>{obj.title}</motion.div>
+        </motion.div>
+    )
+}
 
 const App = () => {
 
@@ -48,14 +65,7 @@ const App = () => {
             </div>
             <div className="moviesCvr">
                 {imgObj.map((ech, index) => {
-                    return (
-                        <motion.div className="ImgBoth" key={`${ech.key}-${ech.title}`} variants={cardVariant} initial="initial" animate="animate" custom={index}>
-                            <motion.div className='ImgCvr' >
-                                <motion.img src={ech.img} alt="" variants={imgMainVar} />
-                            </motion.div>
-                            <motion.div className="ImgTitle" variants={imgTitleVar}>{ech.title}</motion.div>
-                        </motion.div>
-                    )
+                    return <ImgComp key={index} obj={ech} index={index} />
                 })}
             </div>
         </div>
