@@ -42,11 +42,11 @@ type imgProps = {
 }
 const ImgComp = ({obj, index}: imgProps) => {
     return (
-        <motion.div className="ImgBoth" key={`${obj.key}-${obj.title}`} variants={cardVariant} initial="initial" animate="animate" custom={index}>
+        <motion.div layout className="ImgBoth" key={`${obj.key}-${obj.title}`} variants={cardVariant} initial="initial" animate="animate" custom={index}>
             <motion.div className='ImgCvr' >
                 <motion.img src={obj.img} alt="" variants={imgMainVar} />
             </motion.div>
-            <motion.div className="ImgTitle" variants={imgTitleVar}>{obj.title}</motion.div>
+            <motion.div className="ImgTitle" variants={imgTitleVar}>{obj.title} - {obj.genre}</motion.div>
         </motion.div>
     )
 }
@@ -61,17 +61,16 @@ const App = () => {
                 <div className="topBtn"><button>Latest movies</button></div>
             </div>
             <div className="filterCvr">
-                <div className=""><button>All movies</button></div>
-                <div className=""><button>Comedy</button></div>
-                <div className=""><button>Action</button></div>
+                <div className=""><button onClick={() => setGenre('all') }>All movies</button></div>
+                <div className=""><button onClick={() => setGenre('comedy') }>Comedy</button></div>
+                <div className=""><button onClick={() => setGenre('action') }>Action</button></div>
             </div>
             <div className="moviesCvr">
                 {imgObj.map((ech, index) => {
-                    if (ech.genre === genre) {
+                    if (genre === 'all') {
                         return <ImgComp key={index} obj={ech} index={index} />
-                    } else {
+                    } else if (ech.genre === genre) {
                         return <ImgComp key={index} obj={ech} index={index} />
-
                     }
                 })}
             </div>
