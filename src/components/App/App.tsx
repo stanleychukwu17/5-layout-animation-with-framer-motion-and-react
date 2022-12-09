@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
+import { useState } from 'react';
 import './app.scss';
 
 // motion variant
@@ -51,6 +52,7 @@ const ImgComp = ({obj, index}: imgProps) => {
 }
 
 const App = () => {
+    const [genre, setGenre] = useState<string>('all');
 
     return (
         <div className="AppMain">
@@ -65,7 +67,11 @@ const App = () => {
             </div>
             <div className="moviesCvr">
                 {imgObj.map((ech, index) => {
-                    return <ImgComp key={index} obj={ech} index={index} />
+                    if (genre === 'all') {
+                        return <ImgComp key={index} obj={ech} index={index} />
+                    } else if (ech.genre === genre) {
+                        return <ImgComp key={index} obj={ech} index={index} />
+                    }
                 })}
             </div>
         </div>
