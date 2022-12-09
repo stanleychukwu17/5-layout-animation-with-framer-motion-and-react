@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
-// import { useRef } from 'react';
 import './app.scss';
 
 // motion variant
-import { cardVariant, imgTitleVar,imgMainVar } from './Variants';
+import { cardVariant, imgTitleVar, imgMainVar } from './Variants';
 
 // import the assets we will be using
 import img1 from '../../assets/img1.jpg'
@@ -23,14 +22,14 @@ const movieTitles = [
     'Babylon (I) (2022)', 'Sherlock Holmes 3'
 ]
 const movieGenre = ['action', 'comedy', 'comedy', 'action', 'comedy', 'action', 'action', 'comedy']
-const imgObj: {key:number, img:string, title:string, w:string}[] = []
+const imgObj: {key:number, img:string, title:string, genre:string}[] = []
 // const imgObj: Record<string, {img:string}> = {}
 
 img.forEach((ech, index) => {
-    imgObj.push({key:gsap.utils.random(0, 100), img:ech, title:movieTitles[index], 'w':movieGenre[index]})
+    imgObj.push({key:gsap.utils.random(0, 100), img:ech, title:movieTitles[index], 'genre':movieGenre[index]})
 })
 img.forEach((ech, index) => {
-    imgObj.push({key:gsap.utils.random(0, 100), img:ech, title:movieTitles[index], 'w':movieGenre[index]})
+    imgObj.push({key:gsap.utils.random(0, 100), img:ech, title:movieTitles[index], 'genre':movieGenre[index]})
 })
 
 
