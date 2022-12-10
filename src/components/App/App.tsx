@@ -42,7 +42,7 @@ type imgProps = {
 }
 const ImgComp = ({obj, index}: imgProps) => {
     return (
-        <motion.div layout className="ImgBoth" key={`${obj.key}-${obj.title}`} variants={cardVariant} initial="initial" animate="animate" custom={index}>
+        <motion.div layout className="ImgBoth" key={`${obj.key}-${obj.title}`} variants={cardVariant} initial="initial" animate="animate" exit="exit" custom={index}>
             <motion.div className='ImgCvr' >
                 <motion.img src={obj.img} alt="" variants={imgMainVar} />
             </motion.div>
