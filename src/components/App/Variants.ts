@@ -1,6 +1,6 @@
 import { Variant } from "framer-motion";
 
-export const cardVariant: {initial?: Variant, animate?: Variant, exit?: Variant} = {
+export const cardVariant: {initial?: Variant, animate?: Variant} = {
     initial: (custom) => ({
         x: -60, opacity:0,
     }),
@@ -12,13 +12,7 @@ export const cardVariant: {initial?: Variant, animate?: Variant, exit?: Variant}
             ease: "easeOut",
             when: "beforeChildren"
         }
-    }),
-    exit: {
-        x: -60, opacity: 0,
-        transition: {
-            duration: .5
-        }
-    }
+    })
 };
 
 
