@@ -22,17 +22,28 @@ const movieTitles = [
     'Killers of the Flower Moon (2023)', 'Spider-Man: Across the Spider-Verse (2023)', 'Elvis (2022)',
     'Babylon (I) (2022)', 'Sherlock Holmes 3'
 ]
-const movieGenre = ['action', 'comedy', 'comedy', 'action', 'comedy', 'action', 'action', 'comedy']
+const movieGenre = {1:['action'], 2:['comedy'], 3:['action', 'comedy']}
 
-type singleImgType = {key:number, img:string, title:string, genre:string}
+type singleImgType = {key:number, img:string, title:string, genre:string[]}
 const imgObj: singleImgType[] = []
 // const imgObj: Record<string, {img:string}> = {}
+let current = 1
 
 img.forEach((ech, index) => {
-    imgObj.push({key:gsap.utils.random(0, 100), img:ech, title:movieTitles[index], 'genre':movieGenre[index]})
+    //@ts-ignore
+    let genre = movieGenre[current]
+    current++
+    if (current > 3) { current = 1 }
+
+    imgObj.push({key:gsap.utils.random(0, 100), img:ech, title:movieTitles[index], 'genre':genre})
 })
 img.forEach((ech, index) => {
-    imgObj.push({key:gsap.utils.random(0, 100), img:ech, title:movieTitles[index], 'genre':movieGenre[index]})
+    //@ts-ignore
+    let genre = movieGenre[current]
+    current++
+    if (current > 3) { current = 1 }
+
+    imgObj.push({key:gsap.utils.random(0, 100), img:ech, title:movieTitles[index], 'genre':genre})
 })
 
 
@@ -42,11 +53,11 @@ type imgProps = {
 }
 const ImgComp = ({obj, index}: imgProps) => {
     return (
-        <motion.div layout className="ImgBoth" key={`${obj.key}-${obj.title}`} variants={cardVariant} initial="initial" animate="animate" exit="exit" custom={index}>
+        <motion.div layout className="ImgBoth" key={`${obj.key}-${obj.title}`} variants={cardVariant} initial="initial" animate="animate" custom={index}>
             <motion.div className='ImgCvr' >
                 <motion.img src={obj.img} alt="" variants={imgMainVar} />
             </motion.div>
-            <motion.div className="ImgTitle" variants={imgTitleVar}>{obj.title} - {obj.genre}</motion.div>
+            <motion.div className="ImgTitle" variants={imgTitleVar}>{obj.title} - {obj.genre.join(' ')}</motion.div>
         </motion.div>
     )
 }
@@ -69,7 +80,7 @@ const App = () => {
                 {imgObj.map((ech, index) => {
                     if (genre === 'all') {
                         return <ImgComp key={index} obj={ech} index={index} />
-                    } else if (ech.genre === genre) {
+                    } else if (ech.genre.includes(genre)) {
                         return <ImgComp key={index} obj={ech} index={index} />
                     }
                 })}
